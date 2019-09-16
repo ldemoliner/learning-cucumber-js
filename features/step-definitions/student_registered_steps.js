@@ -1,14 +1,14 @@
 const assert = require('assert');
 const { Given, When, Then } = require('cucumber');
+const StudentBO = require('../../src/studentBO');
 
-const students = []
 
 Given('{string} is registered', function (name) {
-    students.push(name);
+    StudentBO.registerStudent(name);
 });
 
 When('I consult {string}\'s data', function (name) {
-    this.name = students.find(student => student == name);
+    this.name = StudentBO.queryStudent(name);
 });
 
 Then('I should receive {string}', function (expectedName) {
