@@ -3,18 +3,16 @@ const { Given, When, Then } = require('cucumber');
 const StudentBO = require('../../src/studentBO');
 const ExerciseBO = require('../../src/exerciseBO');
 
-
 Given('the student {string} is registered', function (name) {
-  ExerciseBO.registerExercise(name);
+  StudentBO.registerStudent(name);
 });
 
-
-When('I associate the exercise {string}', function (exercise) {
-  this.exercise = ExerciseBO.queryExercise(exercise);
+When('I assign the exercise {string} to {string}', function (exercise, student) {
+  ExerciseBO.assignExercise(student, exercise);
 });
 
-
-Then('{string} should have the following exercise:', function (string, docString) {
+Then('{string} should have the following exercise:', function (student, docString) {
   const exercises = JSON.parse(docString);
-  assert.equal(this.exercises, docString);
+  student = StudentBO.queryStudent(student);
+  assert.equal(exercises, student.exercises);
 });

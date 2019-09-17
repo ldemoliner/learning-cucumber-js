@@ -1,4 +1,3 @@
 module.exports = ExerciseBO = {
-    registerExercise: exercise => {},
-    queryExercise: exercise => {}
+    assignExercise: (student, exercise) => {}
 }
