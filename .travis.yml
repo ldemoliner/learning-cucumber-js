@@ -1,2 +1,3 @@
 language: javascript
-script: npm i npm test
+before_script: npm i
+script: npm test
